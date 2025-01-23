@@ -1,0 +1,17 @@
+<mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+      <mat-nav-list>
+        <a mat-list-item routerLink="/alumnos">Alumnos</a>
+        <a mat-list-item routerLink="/clases">Clases</a>
+        <a mat-list-item routerLink="/cursos">Cursos</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        Administración de Alumnos, Clases y Cursos
+      </mat-toolbar>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
