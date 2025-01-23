@@ -6,15 +6,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { CoreModule } from './core/core.module';
-import { FullNamePipe } from './shared/full-name.pipe';
 import { TitleSizeDirective } from './shared/title-size.directive';
 import { AlumnosModule } from './features/alumnos/alumnos.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FullNamePipe,
     TitleSizeDirective
   ],
   imports: [
@@ -22,7 +23,8 @@ import { AlumnosModule } from './features/alumnos/alumnos.module';
     AlumnosModule,
     BrowserModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideAnimationsAsync()

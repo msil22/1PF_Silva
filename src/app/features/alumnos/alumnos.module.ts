@@ -8,12 +8,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { FullNamePipe } from '../../shared/full-name.pipe';
+
 
 
 @NgModule({
   declarations: [
     ListaComponent,
-    AbmComponent
+    AbmComponent,
+    FullNamePipe
   ],
   imports: [
     AlumnosRoutingModule,
