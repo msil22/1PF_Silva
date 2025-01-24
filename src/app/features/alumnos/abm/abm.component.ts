@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AdminService } from '../../../shared/admin.service'; 
 
 @Component({
   selector: 'app-abm',
@@ -8,18 +9,45 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AbmComponent {
   alumnoForm: FormGroup;
+  claseForm: FormGroup;
+  cursoForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private adminService: AdminService) {
     this.alumnoForm = this.fb.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      edad: ['', [Validators.required, Validators.min(1)]],
+      email: ['', [Validators.required, Validators.email]],
+    });
+
+    this.claseForm = this.fb.group({
+      nombre: ['', Validators.required],
+      cantidadAlumnos: ['', [Validators.required, Validators.min(1)]],
+    });
+
+    this.cursoForm = this.fb.group({
+      nombre: ['', Validators.required],
+      nivel: ['', Validators.required],
     });
   }
 
-  onSubmit() {
+  guardarAlumno() {
     if (this.alumnoForm.valid) {
-      console.log('Datos del alumno:', this.alumnoForm.value);
+      this.adminService.agregarAlumno(this.alumnoForm.value);
+      this.alumnoForm.reset();
+    }
+  }
+
+  guardarClase() {
+    if (this.claseForm.valid) {
+      this.adminService.agregarClase(this.claseForm.value);
+      this.claseForm.reset();
+    }
+  }
+
+  guardarCurso() {
+    if (this.cursoForm.valid) {
+      this.adminService.agregarCurso(this.cursoForm.value);
+      this.cursoForm.reset();
     }
   }
 }

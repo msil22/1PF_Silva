@@ -1,18 +1,63 @@
-<form [formGroup]="alumnoForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="outline">
-    <mat-label>Nombre</mat-label>
-    <input matInput formControlName="nombre" />
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Apellido</mat-label>
-    <input matInput formControlName="apellido" />
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Edad</mat-label>
-    <input matInput type="number" formControlName="edad" />
-  </mat-form-field>
-  <h2 appTitleSize>Título Estilizado</h2>
-  <button mat-raised-button color="primary" type="submit" [disabled]="!alumnoForm.valid">
-    Guardar
-  </button>
-</form>
+<mat-tab-group>
+  <!-- Formulario Alumnos -->
+  <mat-tab label="Alumnos">
+    <form [formGroup]="alumnoForm" (ngSubmit)="guardarAlumno()">
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="apellido" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="!alumnoForm.valid">
+        Guardar Alumno
+      </button>
+    </form>
+  </mat-tab>
+
+  <!-- Formulario Clases -->
+  <mat-tab label="Clases">
+    <form [formGroup]="claseForm" (ngSubmit)="guardarClase()">
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Cantidad de Alumnos</mat-label>
+        <input matInput formControlName="cantidadAlumnos" type="number" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="!claseForm.valid">
+        Guardar Clase
+      </button>
+    </form>
+  </mat-tab>
+
+  <!-- Formulario Cursos -->
+  <mat-tab label="Cursos">
+    <form [formGroup]="cursoForm" (ngSubmit)="guardarCurso()">
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Nivel</mat-label>
+        <input matInput formControlName="nivel" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="!cursoForm.valid">
+        Guardar Curso
+      </button>
+    </form>
+  </mat-tab>
+</mat-tab-group>

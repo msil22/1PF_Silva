@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListaComponent } from './features/alumnos/lista/lista.component';
-import { AbmComponent } from './features/alumnos/abm/abm.component';
+import { LayoutComponent } from './core/layout/layout.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'alumnos/lista', pathMatch: 'full' }, 
-  { path: 'alumnos/lista', component: ListaComponent },         
-  { path: 'alumnos/abm', component: AbmComponent }            
+  { path: '', component: LayoutComponent, children: [
+    { path: 'alumnos', loadChildren: () => import('./features/alumnos/alumnos.module').then(m => m.AlumnosModule) },
+  ]}
 ];
 
 @NgModule({
